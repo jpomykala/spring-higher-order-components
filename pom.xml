@@ -4,11 +4,25 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.jpomykala.hoc</groupId>
-    <artifactId>spring-hoc</artifactId>
+    <artifactId>spring-higher-order-components</artifactId>
     <version>1.0.0-b1</version>
     <packaging>jar</packaging>
 
-    <name>spring-hoc</name>
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/jpomykala/spring-higher-order-components.git</connection>
+        <developerConnection>scm:git:ssh://github.com:jpomykala/spring-higher-order-components.git</developerConnection>
+        <url>https://github.com/jpomykala/spring-higher-order-components.git/tree/master</url>
+    </scm>
+
+    <name>spring-higher-order-components</name>
     <description>High Order Components for Spring Boot</description>
 
     <parent>
@@ -17,6 +31,20 @@
         <version>2.0.5.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <developers>
+        <developer>
+            <id>jpomykala</id>
+            <name>Jakub Pomykała</name>
+            <email>jakub.pomykala@gmail.com</email>
+            <url>https://jpomykala.me</url>
+            <roles>
+                <role>Project Lead</role>
+            </roles>
+            <timezone>Europe/Warsaw</timezone>
+        </developer>
+    </developers>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
