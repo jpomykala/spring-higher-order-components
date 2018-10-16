@@ -12,7 +12,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({EnableResponseImportWrapper.class})
+@Import({EnableResponseImportWrapperAutoConfiguration.class})
 public @interface EnableResponseWrapping {
 
 }

@@ -9,6 +9,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
  */
 @ControllerAdvice
 @ConditionalOnWebApplication
-public class EnableResponseImportWrapper extends ResponseDataWrapper {
+public class EnableResponseImportWrapperAutoConfiguration extends ResponseWrapperAutoConfiguration {
 
 }

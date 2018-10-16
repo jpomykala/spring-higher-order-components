@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.List;
 
-public class ResponseDataWrapper implements ResponseBodyAdvice {
+public class ResponseWrapperAutoConfiguration implements ResponseBodyAdvice {
 
   @Override
   public boolean supports(MethodParameter returnType, Class converterType) {
