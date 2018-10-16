@@ -1,4 +1,10 @@
-# Spring-HOC
+# Spring Higher-Order Components
+Boilerplate components for AWS and Spring Boot. 
+- Sending e-mails with step builder
+- Request logging 
+- Uploading files to S3
+- CORS [in-development]
+- Simple OAuth2 configuration [soon]
 
 ## Why you should use it?
 To speed up you development in next projects, instead copy-pasting good solutions between projects.
