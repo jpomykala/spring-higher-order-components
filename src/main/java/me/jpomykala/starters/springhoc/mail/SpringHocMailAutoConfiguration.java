@@ -17,7 +17,7 @@ public class SpringHocMailAutoConfiguration {
   private AmazonSimpleEmailService amazonSimpleEmailService;
 
   @Bean
-  public SpringHocMailService mailSendingService() {
-    return new SpringHocMailService(configuration, amazonSimpleEmailService);
+  public MailService mailSendingService() {
+    return new MailService(configuration, amazonSimpleEmailService);
   }
 }

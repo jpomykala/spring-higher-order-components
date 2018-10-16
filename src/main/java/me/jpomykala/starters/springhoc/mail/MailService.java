@@ -12,20 +12,24 @@ import org.springframework.lang.NonNull;
 
 import java.util.Optional;
 
-public class SpringHocMailService {
+public class MailService {
 
-  private Logger log = LoggerFactory.getLogger(SpringHocMailService.class);
+  private Logger log = LoggerFactory.getLogger(MailService.class);
 
   private final SpringHocMailProperties springHocMailProperties;
   private final AmazonSimpleEmailService simpleEmailService;
 
-  public SpringHocMailService(SpringHocMailProperties springHocMailProperties, AmazonSimpleEmailService simpleEmailService) {
+  public MailService(SpringHocMailProperties springHocMailProperties, AmazonSimpleEmailService simpleEmailService) {
     this.springHocMailProperties = springHocMailProperties;
     this.simpleEmailService = simpleEmailService;
   }
 
   @EventListener(EmailRequest.class)
   public void onEmailMessageRequest(@NonNull EmailRequest emailRequest) {
+    sendEmail(emailRequest);
+  }
+
+  private void sendEmail(@NonNull EmailRequest emailRequest) {
     SendEmailRequest sendEmailRequest = new SendEmailRequest()
             .withMessage(emailRequest.getMessage())
             .withReplyToAddresses(emailRequest.getReplyTo())
