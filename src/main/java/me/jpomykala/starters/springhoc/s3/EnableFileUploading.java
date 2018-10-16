@@ -10,5 +10,5 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Import({SpringHocS3AutoConfiguration.class})
-public @interface EnableFileUpload {
+public @interface EnableFileUploading {
 }
