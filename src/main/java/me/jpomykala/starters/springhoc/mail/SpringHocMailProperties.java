@@ -2,7 +2,7 @@ package me.jpomykala.starters.springhoc.mail;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-@ConfigurationProperties(prefix = "hoc.mail")
+@ConfigurationProperties(prefix = "spring-hoc.mail")
 public class SpringHocMailProperties {
   private String senderEmailAddress;
 

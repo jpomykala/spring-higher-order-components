@@ -7,26 +7,25 @@ import com.amazonaws.services.simpleemail.model.Message;
 import com.amazonaws.services.simpleemail.model.SendEmailRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.lang.NonNull;
 
 import java.util.Optional;
 
-public class MailSendingService {
+public class SpringHocMailService {
 
-  private Logger log = LoggerFactory.getLogger(MailSendingService.class);
+  private Logger log = LoggerFactory.getLogger(SpringHocMailService.class);
 
   private final SpringHocMailProperties springHocMailProperties;
   private final AmazonSimpleEmailService simpleEmailService;
 
-  public MailSendingService(SpringHocMailProperties springHocMailProperties, AmazonSimpleEmailService simpleEmailService) {
+  public SpringHocMailService(SpringHocMailProperties springHocMailProperties, AmazonSimpleEmailService simpleEmailService) {
     this.springHocMailProperties = springHocMailProperties;
     this.simpleEmailService = simpleEmailService;
   }
 
-  @EventListener(EmailMessageRequest.class)
-  public void onEmailMessageRequest(@NonNull EmailMessageRequest emailRequest) {
+  @EventListener(EmailRequest.class)
+  public void onEmailMessageRequest(@NonNull EmailRequest emailRequest) {
     SendEmailRequest sendEmailRequest = new SendEmailRequest()
             .withMessage(emailRequest.getMessage())
             .withReplyToAddresses(emailRequest.getReplyTo())
@@ -42,7 +41,7 @@ public class MailSendingService {
             .orElse("");
 
     Destination destination = emailRequest.getDestination();
-    log.debug("Send email {} to {}", subject, destination);
+    log.debug("send email to {}", subject, destination);
     emailRequest.setSource(springHocMailProperties.getSenderEmailAddress());
     simpleEmailService.sendEmail(emailRequest);
   }

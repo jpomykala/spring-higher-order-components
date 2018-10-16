@@ -11,7 +11,7 @@ import java.util.*;
  * @author Jakub Pomykala on 4/2/18.
  * @project spring-hoc
  */
-public class EmailMessageRequest {
+public class EmailRequest {
 
   private Destination destination;
   private Set<String> replyTo;
@@ -29,7 +29,7 @@ public class EmailMessageRequest {
     return message;
   }
 
-  protected EmailMessageRequest(Builder builder) {
+  protected EmailRequest(Builder builder) {
     this.destination = builder.destination;
     this.message = builder.message;
     this.replyTo = new HashSet<>(builder.replyTo);
@@ -111,8 +111,8 @@ public class EmailMessageRequest {
       return this;
     }
 
-    public EmailMessageRequest build() {
-      return new EmailMessageRequest(this);
+    public EmailRequest build() {
+      return new EmailRequest(this);
     }
   }
 
