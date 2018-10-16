@@ -9,5 +9,5 @@ import java.lang.annotation.*;
 @Documented
 @Inherited
 @Import({SpringHocMailAutoConfiguration.class})
-public @interface EnableSimpleEmail {
+public @interface EnableMailing {
 }
