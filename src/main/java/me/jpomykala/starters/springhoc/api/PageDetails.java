@@ -2,9 +2,6 @@ package me.jpomykala.starters.springhoc.api;
 
 import org.springframework.data.domain.Page;
 
-/**
- * Created by evelan on 25/04/2017.
- */
 public class PageDetails {
 
   private Long totalElements;

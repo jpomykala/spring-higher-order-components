@@ -7,10 +7,6 @@ import com.amazonaws.services.simpleemail.model.Message;
 
 import java.util.*;
 
-/**
- * @author Jakub Pomykala on 4/2/18.
- * @project spring-hoc
- */
 public class EmailRequest {
 
   private Destination destination;

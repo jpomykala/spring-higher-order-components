@@ -1,11 +1,6 @@
 package me.jpomykala.starters.springhoc.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
-import com.amazonaws.services.s3.AmazonS3ClientBuilder;
-import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
-import me.jpomykala.starters.springhoc.SpringHocAwsProperties;
-import me.jpomykala.starters.springhoc.mail.SpringHocMailProperties;
-import me.jpomykala.starters.springhoc.mail.SpringHocMailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.SearchStrategy;

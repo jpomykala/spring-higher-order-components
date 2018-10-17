@@ -1,6 +1,5 @@
 package me.jpomykala.starters.springhoc.cors;
 
-import me.jpomykala.starters.springhoc.api.EnableResponseImportWrapperAutoConfiguration;
 import org.springframework.context.annotation.Import;
 
 import java.lang.annotation.*;

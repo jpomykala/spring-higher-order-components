@@ -2,9 +2,6 @@ package me.jpomykala.starters.springhoc.api;
 
 import org.springframework.http.HttpStatus;
 
-/**
- * Created by evelan on 21/02/2017.
- */
 public class RestResponse<T> {
 
   private String msg;
