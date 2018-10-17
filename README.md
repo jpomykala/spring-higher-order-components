@@ -6,6 +6,14 @@ Boilerplate components for AWS and Spring Boot.
 - CORS [in-development]
 - Simple OAuth2 configuration [soon]
 
+## Installation
+```
+<dependency>
+  <groupId>me.jpomykala.hoc</groupId>
+  <artifactId>spring-higher-order-components</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 ## Why you should use it?
 To speed up you development in next projects, instead copy-pasting good solutions between projects.
 
