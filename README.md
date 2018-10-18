@@ -11,7 +11,7 @@ Boilerplate components for AWS and Spring Boot.
 <dependency>
   <groupId>me.jpomykala.hoc</groupId>
   <artifactId>spring-higher-order-components</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 ## Why you should use it?
