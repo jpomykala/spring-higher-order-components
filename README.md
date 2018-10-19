@@ -14,8 +14,19 @@ Boilerplate components for AWS and Spring Boot.
   <version>1.0.4</version>
 </dependency>
 ```
-## Why you should use it?
-To speed up you development in next projects, instead copy-pasting good solutions between projects.
+## Motivation
+
+- Write inline code
+- Duplicate code a few times in different spots
+- Extract duplicate code into methods
+- Use your abstractions for a while
+- See how that code interacts with other code
+- Extract common functionality into internal library
+- Use internal library for extended periods of time
+- Really understand how all of the pieces come together
+- Create external open source library (we are here now)
+
+source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices-are-something-you-grow-into-not-begin-with)
 
 ## @EnableEmailSending
 
