@@ -8,6 +8,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({SpringHocS3AutoConfiguration.class})
+@Import({SpringHocS3AutoConfiguration.class, SpringHocS3AutoConfiguration.class})
 public @interface EnableFileUploading {
 }

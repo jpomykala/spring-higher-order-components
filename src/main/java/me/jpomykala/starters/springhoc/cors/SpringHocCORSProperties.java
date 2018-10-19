@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ConfigurationProperties(prefix = "spring-hoc.cors")
-public class SpringHocCorsProperties {
+public class SpringHocCORSProperties {
 
   /**
    * Comma-separated list of origins to allow. '*' allows all origins. When not set,

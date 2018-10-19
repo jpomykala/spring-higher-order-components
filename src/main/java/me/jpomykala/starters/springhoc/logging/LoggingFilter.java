@@ -21,11 +21,11 @@ public class LoggingFilter extends OncePerRequestFilter {
     this.mdcLogFormat = mdcLogFormat;
   }
 
-  public void setPrincipalProvider(PrincipalProvider principalProvider) {
+  void setPrincipalProvider(PrincipalProvider principalProvider) {
     this.principalProvider = principalProvider;
   }
 
-  public void setRequestIdProvider(RequestIdProvider requestIdProvider) {
+  void setRequestIdProvider(RequestIdProvider requestIdProvider) {
     this.requestIdProvider = requestIdProvider;
   }
 

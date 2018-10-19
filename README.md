@@ -11,13 +11,13 @@ Boilerplate components for AWS and Spring Boot.
 <dependency>
   <groupId>me.jpomykala.hoc</groupId>
   <artifactId>spring-higher-order-components</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.4</version>
 </dependency>
 ```
 ## Why you should use it?
 To speed up you development in next projects, instead copy-pasting good solutions between projects.
 
-## @EnableMailing
+## @EnableEmailSending
 
 This component give you simple API to send emails using Amazon SES service. 
 
@@ -46,7 +46,7 @@ Now it's time to send email. You have 2 options here.
 
 That's all!
 
-## @EnableCors _[in-development]_
+## @EnableCORS
 
 This annotation adds filter with which handle CORS. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
 

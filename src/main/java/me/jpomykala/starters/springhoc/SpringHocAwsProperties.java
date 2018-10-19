@@ -8,12 +8,12 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "spring-hoc.aws")
 public class SpringHocAwsProperties {
 
-  private String accessToken;
+  private String accessKey;
   private String secretKey;
   private String region;
 
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
+  public void setAccessKey(String accessKey) {
+    this.accessKey = accessKey;
   }
 
   public void setSecretKey(String secretKey) {
@@ -24,8 +24,8 @@ public class SpringHocAwsProperties {
     this.region = region;
   }
 
-  public String getAccessToken() {
-    return accessToken;
+  public String getAccessKey() {
+    return accessKey;
   }
 
   public String getSecretKey() {
@@ -41,7 +41,7 @@ public class SpringHocAwsProperties {
   }
 
   public AWSStaticCredentialsProvider getAWSCredentials() {
-    final String accessKey = getAccessToken();
+    final String accessKey = getAccessKey();
     final String secretKey = getSecretKey();
     final BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
     return new AWSStaticCredentialsProvider(credentials);

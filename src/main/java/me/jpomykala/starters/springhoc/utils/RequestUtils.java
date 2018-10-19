@@ -4,8 +4,6 @@ package me.jpomykala.starters.springhoc.utils;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-
 public class RequestUtils {
 
   public static String getClientIP(HttpServletRequest request) {
@@ -35,9 +33,11 @@ public class RequestUtils {
     String queryString = optionalRequest
             .map(HttpServletRequest::getQueryString)
             .orElse("");
-    if (!isNullOrEmpty(queryString)) {
+
+    if (queryString.isEmpty()) {
       return requestUrl + "?" + queryString;
     }
+
     return requestUrl;
   }
 }

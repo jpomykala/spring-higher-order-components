@@ -42,4 +42,9 @@ public class RestResponse<T> {
     return new RestResponse("OK", HttpStatus.OK, body, pageDetails);
   }
 
+  @SuppressWarnings("unchecked")
+  public static RestResponse of(String message, HttpStatus status) {
+    return new RestResponse(message, status, null, null);
+  }
+
 }

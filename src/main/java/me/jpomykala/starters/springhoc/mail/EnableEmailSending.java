@@ -1,4 +1,4 @@
-package me.jpomykala.starters.springhoc.cors;
+package me.jpomykala.starters.springhoc.mail;
 
 import org.springframework.context.annotation.Import;
 
@@ -8,6 +8,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({SpringHocCorsAutoConfiguration.class})
-public @interface EnableCors {
+@Import({AmazonSesAutoConfiguration.class, SpringHocMailAutoConfiguration.class})
+public @interface EnableEmailSending {
 }

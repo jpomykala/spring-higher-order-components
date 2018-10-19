@@ -3,7 +3,6 @@ package me.jpomykala.starters.springhoc.s3;
 
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
-import com.google.common.hash.Hashing;
 import me.jpomykala.starters.springhoc.s3.model.UploadRequest;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Optional;
+import java.util.UUID;
 
 public class UploadService {
 
@@ -53,7 +53,7 @@ public class UploadService {
   }
 
   public String upload(byte[] bytes) {
-    String generatedFilePath = Hashing.sha256().toString();
+    String generatedFilePath = UUID.randomUUID().toString().replace("-", "").toLowerCase();
     upload(bytes, generatedFilePath);
     return generatedFilePath;
   }
