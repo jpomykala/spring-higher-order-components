@@ -8,6 +8,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({AmazonSesAutoConfiguration.class, SpringHocMailAutoConfiguration.class})
+@Import({AmazonSesAutoConfiguration.class, MailServiceAutoConfiguration.class})
 public @interface EnableEmailSending {
 }

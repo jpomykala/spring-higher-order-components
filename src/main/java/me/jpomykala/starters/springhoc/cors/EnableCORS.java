@@ -8,6 +8,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({SpringHocCORSAutoConfiguration.class})
+@Import({CorsAutoConfiguration.class})
 public @interface EnableCORS {
 }

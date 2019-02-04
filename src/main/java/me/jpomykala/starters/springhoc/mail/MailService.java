@@ -16,10 +16,10 @@ public class MailService {
 
   private Logger log = LoggerFactory.getLogger(MailService.class);
 
-  private final SpringHocMailProperties springHocMailProperties;
+  private final MailServiceProperties springHocMailProperties;
   private final AmazonSimpleEmailService simpleEmailService;
 
-  public MailService(SpringHocMailProperties springHocMailProperties, AmazonSimpleEmailService simpleEmailService) {
+  public MailService(MailServiceProperties springHocMailProperties, AmazonSimpleEmailService simpleEmailService) {
     this.springHocMailProperties = springHocMailProperties;
     this.simpleEmailService = simpleEmailService;
   }

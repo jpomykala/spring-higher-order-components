@@ -6,7 +6,7 @@ import com.amazonaws.regions.Regions;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "spring-hoc.aws")
-public class SpringHocAwsProperties {
+public class AmazonProperties {
 
   private String accessKey;
   private String secretKey;
@@ -37,12 +37,10 @@ public class SpringHocAwsProperties {
   }
 
   public Regions getRegions() {
-    return Regions.fromName(getRegion());
+    return Regions.fromName(region);
   }
 
   public AWSStaticCredentialsProvider getAWSCredentials() {
-    final String accessKey = getAccessKey();
-    final String secretKey = getSecretKey();
     final BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
     return new AWSStaticCredentialsProvider(credentials);
   }

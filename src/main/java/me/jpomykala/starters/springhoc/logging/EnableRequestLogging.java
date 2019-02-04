@@ -8,6 +8,6 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Inherited
-@Import({SpringHocLoggingAutoConfiguration.class})
+@Import({RequestLoggingAutoConfiguration.class})
 public @interface EnableRequestLogging {
 }

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -14,22 +15,21 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
-import static org.springframework.http.HttpMethod.*;
+import java.util.stream.Collectors;
 
 @Configuration
-@EnableConfigurationProperties(SpringHocCORSProperties.class)
-public class SpringHocCORSAutoConfiguration {
+@EnableConfigurationProperties(CorsProperties.class)
+public class CorsAutoConfiguration {
 
-  private final SpringHocCORSProperties properties;
+  private final CorsProperties properties;
 
   @Autowired
-  public SpringHocCORSAutoConfiguration(SpringHocCORSProperties properties) {
+  public CorsAutoConfiguration(CorsProperties properties) {
     this.properties = properties;
   }
 
   @Bean
-  public FilterRegistrationBean corsConfigurationSource() {
+  public FilterRegistrationBean corsFilter() {
     CorsConfiguration configuration = new CorsConfiguration();
 
     List<String> allowedOrigins = getAllowedOrigins();
@@ -60,35 +60,30 @@ public class SpringHocCORSAutoConfiguration {
 
   private List<String> getAllowedHeaders() {
     List<String> allowedHeaders = properties.getAllowedHeaders();
-    if (allowedHeaders.isEmpty()) {
-      return Arrays.asList(
-              HttpHeaders.ORIGIN,
-              HttpHeaders.REFERER,
-              HttpHeaders.USER_AGENT,
-              HttpHeaders.CACHE_CONTROL,
-              HttpHeaders.CONTENT_TYPE,
-              HttpHeaders.ACCEPT,
-              HttpHeaders.AUTHORIZATION,
-              "X-Requested-With",
-              "X-Forwarded-For",
-              "x-ijt");
+    if (!allowedHeaders.isEmpty()) {
+      return allowedHeaders;
     }
-    return allowedHeaders;
+    return Arrays.asList(
+            HttpHeaders.ORIGIN,
+            HttpHeaders.REFERER,
+            HttpHeaders.USER_AGENT,
+            HttpHeaders.CACHE_CONTROL,
+            HttpHeaders.CONTENT_TYPE,
+            HttpHeaders.ACCEPT,
+            HttpHeaders.AUTHORIZATION,
+            "X-Requested-With",
+            "X-Forwarded-For",
+            "x-ijt");
   }
 
   private List<String> getAllowedMethods() {
     List<String> allowedMethods = properties.getAllowedMethods();
-    if (allowedMethods.isEmpty()) {
-      return Arrays.asList(
-              GET.name(),
-              HEAD.name(),
-              POST.name(),
-              PATCH.name(),
-              PUT.name(),
-              OPTIONS.name(),
-              DELETE.name());
+    if (!allowedMethods.isEmpty()) {
+      return allowedMethods;
     }
-    return allowedMethods;
+    return Arrays.stream(HttpMethod.values())
+            .map(Enum::name)
+            .collect(Collectors.toList());
   }
 
 }

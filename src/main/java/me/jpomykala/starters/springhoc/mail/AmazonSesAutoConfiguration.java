@@ -2,7 +2,7 @@ package me.jpomykala.starters.springhoc.mail;
 
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.AmazonSimpleEmailServiceClientBuilder;
-import me.jpomykala.starters.springhoc.SpringHocAwsProperties;
+import me.jpomykala.starters.springhoc.AmazonProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -10,11 +10,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@EnableConfigurationProperties(SpringHocAwsProperties.class)
+@EnableConfigurationProperties(AmazonProperties.class)
 public class AmazonSesAutoConfiguration {
 
+  private final AmazonProperties properties;
+
   @Autowired
-  private SpringHocAwsProperties properties;
+  public AmazonSesAutoConfiguration(AmazonProperties properties) {
+    this.properties = properties;
+  }
 
   @Bean
   @ConditionalOnMissingBean
@@ -24,4 +28,6 @@ public class AmazonSesAutoConfiguration {
             .withRegion(properties.getRegions())
             .build();
   }
+
+
 }

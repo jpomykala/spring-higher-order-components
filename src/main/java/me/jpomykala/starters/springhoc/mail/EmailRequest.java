@@ -63,7 +63,7 @@ public class EmailRequest {
     private Destination destination;
     private Collection<String> replyTo;
 
-    Builder() {
+    public Builder() {
       message = new Message();
       replyTo = new ArrayList<>();
     }

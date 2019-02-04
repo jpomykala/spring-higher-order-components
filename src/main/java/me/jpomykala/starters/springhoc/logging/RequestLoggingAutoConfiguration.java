@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class SpringHocLoggingAutoConfiguration {
+public class RequestLoggingAutoConfiguration {
 
   @Bean
   public LoggingFilterFactory loggingFilterFactory() {

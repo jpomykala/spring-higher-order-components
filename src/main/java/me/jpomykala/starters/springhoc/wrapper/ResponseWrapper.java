@@ -1,18 +1,20 @@
-package me.jpomykala.starters.springhoc.api;
+package me.jpomykala.starters.springhoc.wrapper;
 
 import org.springframework.core.MethodParameter;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
+import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.List;
 
-public class ResponseWrapperAutoConfiguration implements ResponseBodyAdvice {
+@ControllerAdvice
+public class ResponseWrapper implements ResponseBodyAdvice {
 
   @Override
-  public boolean supports(MethodParameter returnType, Class converterType) {
+  public boolean supports(MethodParameter methodParameter, Class converterType) {
     return true;
   }
 
@@ -30,8 +32,9 @@ public class ResponseWrapperAutoConfiguration implements ResponseBodyAdvice {
     }
 
     if (body instanceof Page) {
-      List data = ((Page) body).getContent();
-      PageDetails pageDetails = new PageDetails((Page) body);
+      Page pageBody = (Page) body;
+      List data = pageBody.getContent();
+      PageDetails pageDetails = PageDetails.of(pageBody);
       return RestResponse.ok(data, pageDetails);
     } else {
       return RestResponse.ok(body);

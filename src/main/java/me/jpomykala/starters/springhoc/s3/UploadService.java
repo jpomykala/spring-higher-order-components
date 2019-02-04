@@ -15,26 +15,26 @@ import java.util.UUID;
 
 public class UploadService {
 
-  private final SpringHocS3Properties properties;
+  private final AmazonS3Properties properties;
   private final AmazonS3 amazonS3;
 
-  public UploadService(SpringHocS3Properties properties, AmazonS3 amazonS3) {
+  public UploadService(AmazonS3Properties properties, AmazonS3 amazonS3) {
     this.properties = properties;
     this.amazonS3 = amazonS3;
   }
 
-  public void upload(@NotNull UploadRequest uploadRequest) {
+  public String upload(@NotNull UploadRequest uploadRequest) {
     byte[] requestBytes = uploadRequest.getBytes();
     String filePath = uploadRequest.getFilePath();
     ObjectMetadata metadata = uploadRequest.getMetadata();
-    upload(requestBytes, filePath, metadata);
+    return upload(requestBytes, filePath, metadata);
   }
 
-  public void upload(@NotNull MultipartFile file) throws IOException {
-    upload(file, "");
+  public String upload(@NotNull MultipartFile file) throws IOException {
+    return upload(file, "");
   }
 
-  public void upload(@NotNull MultipartFile file, @NotNull String path) throws IOException {
+  public String upload(@NotNull MultipartFile file, @NotNull String path) throws IOException {
     Optional<MultipartFile> multipartFile = Optional.of(file);
     String originalFilename = multipartFile
             .map(MultipartFile::getOriginalFilename)
@@ -49,20 +49,20 @@ public class UploadService {
     objectMetadata.setContentType(contentType);
 
     byte[] bytes = file.getBytes();
-    upload(bytes, path + "/" + originalFilename, objectMetadata);
+    return upload(bytes, path + "/" + originalFilename, objectMetadata);
   }
 
   public String upload(byte[] bytes) {
     String generatedFilePath = UUID.randomUUID().toString().replace("-", "").toLowerCase();
     upload(bytes, generatedFilePath);
-    return generatedFilePath;
+    return getDownloadUrl(generatedFilePath);
   }
 
-  public void upload(byte[] bytes, String fileKey) {
-    upload(bytes, fileKey, new ObjectMetadata());
+  public String upload(byte[] bytes, String fileKey) {
+    return upload(bytes, fileKey, new ObjectMetadata());
   }
 
-  public void upload(byte[] bytes, String fileKey, ObjectMetadata metadata) {
+  public String upload(byte[] bytes, String fileKey, ObjectMetadata metadata) {
     int length = bytes.length;
     if (length == 0) {
       throw new IllegalArgumentException("File has 0 bytes");
@@ -71,6 +71,11 @@ public class UploadService {
     metadata.setContentLength(length);
     String bucketName = properties.getBucketName();
     amazonS3.putObject(bucketName, fileKey, inputStream, metadata);
+    return getDownloadUrl(fileKey);
+  }
+
+  public String getDownloadUrl(String fileKey) {
+    return "https://" + properties.getBucketName() + "/" + fileKey;
   }
 }
 

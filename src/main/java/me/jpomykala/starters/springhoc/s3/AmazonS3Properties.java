@@ -3,7 +3,7 @@ package me.jpomykala.starters.springhoc.s3;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties(prefix = "spring-hoc.s3")
-public class SpringHocS3Properties {
+public class AmazonS3Properties {
 
   private String bucketName;
 
