@@ -1,10 +1,15 @@
 # Spring Higher-Order Components
+
+[![Build Status](https://travis-ci.org/jpomykala/spring-higher-order-components.svg?branch=master)](https://travis-ci.org/jpomykala/spring-higher-order-components)
+
 Boilerplate components for AWS and Spring Boot. 
 - Sending e-mails with step builder
 - Request logging 
 - Uploading files to S3
 - CORS [in-development]
 - Simple OAuth2 configuration [soon]
+
+
 
 ## Installation
 ```
