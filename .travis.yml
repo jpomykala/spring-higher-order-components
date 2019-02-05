@@ -4,20 +4,15 @@ jdk:
 install: true
 script: mvn clean install -B -V
 after_success:
-  - mvn jacoco:report && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
-
-#deploy:
-#  provider: script
-#  script: "test ${TRAVIS_TEST_RESULT} -eq 0 && mvn -s etc/travis-settings.xml -DskipTests=true deploy"
-#  skip_cleanup: true
-#  on:
-#    branch: master
-
-#sudo: required
+  - mvn jacoco:report && bash <(curl -s https://codecov.io/bash) || echo "Codecov did
+    not collect coverage reports"
 cache:
   directories:
-    - $HOME/.m2
+    - "$HOME/.m2"
 addons:
   apt:
     packages:
       - oracle-java8-installer
+before_install:
+  - openssl aes-256-cbc -K $encrypted_c73894d72094_key -iv $encrypted_c73894d72094_iv
+    -in sonatype.pgp.enc -out sonatype.pgp -d
