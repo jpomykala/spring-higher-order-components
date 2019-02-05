@@ -4,7 +4,7 @@ jdk:
 install: mvn --settings .maven.xml clean install -DskipTests=true -Dgpg.skip -Dmaven.javadoc.skip=true -B -V
 script: mvn clean deploy --settings .maven.xml -DskipTests=true -B -U -Prelease
 after_success:
-  - mvn jacoco:report && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+  - mvn --settings .maven.xml jacoco:report && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 
 cache:
   directories:
