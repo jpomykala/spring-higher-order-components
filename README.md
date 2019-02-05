@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/jpomykala/spring-higher-order-components.svg?branch=master)](https://travis-ci.org/jpomykala/spring-higher-order-components)
 
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components)
+
 Boilerplate components for AWS and Spring Boot. 
 - Sending e-mails with step builder
 - Request logging 
