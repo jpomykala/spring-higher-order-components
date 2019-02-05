@@ -5,8 +5,8 @@
             <username>${env.OSSRH_USERNAME}</username>
             <password>${env.OSSRH_PASSWORD}</password>
         </server>
-
     </servers>
+
     <profiles>
         <profile>
 
@@ -15,6 +15,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
+                <gpg.executable>${env.GPG_EXECUTABLE}</gpg.executable>
                 <gpg.passphrase>${env.GPG_PASS_PHRASE}</gpg.passphrase>
             </properties>
         </profile>
