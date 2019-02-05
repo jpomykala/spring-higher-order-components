@@ -137,7 +137,7 @@ Every output will be wrapped into `RestResponse` [see this issue](https://github
 
 ## @EnableCORS
 
-This annotation adds filter with which handle CORS. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
+This annotation adds filter which handles CORS requests. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
 
 
 # Contribution
