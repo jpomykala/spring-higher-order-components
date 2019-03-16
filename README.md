@@ -135,6 +135,8 @@ Every `@RestController` output will be wrapped into `RestResponse<T>` object for
   
 Every output will be wrapped into `RestResponse` [see this issue](https://github.com/jpomykala/spring-higher-order-components/issues/4)
 
+Response wrapping can be disabled for specific endpoinds by using `@DisableWrapping` annotation on method.
+
 ## @EnableCORS
 
 This annotation adds filter which handles CORS requests. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
