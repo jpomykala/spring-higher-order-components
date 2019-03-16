@@ -8,6 +8,7 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import java.lang.annotation.Annotation;
 import java.util.List;
 
 @ControllerAdvice
@@ -15,6 +16,13 @@ public class ResponseWrapper implements ResponseBodyAdvice {
 
   @Override
   public boolean supports(MethodParameter methodParameter, Class converterType) {
+    Annotation[] methodAnnotations = methodParameter.getMethodAnnotations();
+
+    for (Annotation methodAnnotation : methodAnnotations) {
+      if (methodAnnotation.annotationType().equals(DisableWrapping.class)) {
+        return false;
+      }
+    }
     return true;
   }
 

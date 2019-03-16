@@ -5,7 +5,7 @@
 
     <groupId>me.jpomykala.hoc</groupId>
     <artifactId>spring-higher-order-components</artifactId>
-    <version>1.0.7-SNAPSHOT</version>
+    <version>1.0.7</version>
     <packaging>jar</packaging>
 
     <licenses>
