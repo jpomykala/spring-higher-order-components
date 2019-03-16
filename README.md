@@ -8,7 +8,8 @@ Boilerplate components for AWS and Spring Boot.
 - Sending e-mails with step builder
 - Request logging 
 - Uploading files to S3
-- CORS [in-development]
+- Response wrapping
+- Custom CORS filter
 - Simple OAuth2 configuration [soon]
 
 
@@ -40,7 +41,7 @@ source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices
 
 ## @EnableEmailSending
 
-This component give you simple API to send emails using Amazon SES service. 
+This component gives you simple API to send emails using Amazon SES service. 
 
 ### Configuration
 
@@ -66,10 +67,6 @@ Now it's time to send email. You have 2 options here.
 - Publish ``EmailRequest`` using ``ApplicationEventPublisher``
 
 That's all!
-
-## @EnableCORS
-
-This annotation adds filter with which handle CORS. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
 
 ## @EnableRequestLogging
 
@@ -114,6 +111,33 @@ spring-hoc:
   mail:
     sender-email-address: xxxxx@xxxx.com    
 ```
+
+## @EnableResponseWrapping
+
+Every `@RestController` output will be wrapped into `RestResponse<T>` object for JSON it will look like as follows:
+
+```
+{
+  msg: "OK"
+  status: 200
+  data: <your data>
+  pageDetails: <page details if you return Page from controller>
+}
+```
+
+`RestResponse` static contructors:
+  
+  - `RestResponse ok(Object body)`
+  - `RestResponse ok(Object body, PageDetails pageDetails)`
+  - `RestResponse empty(String message, HttpStatus status)`
+  - `RestResponse of(String message, HttpStatus status, Object data)`
+  - `RestResponse of(String message, HttpStatus status, Object data, PageDetails pageDetails)`
+  
+Every output will be wrapped into `RestResponse` [see this issue](https://github.com/jpomykala/spring-higher-order-components/issues/4)
+
+## @EnableCORS
+
+This annotation adds filter which handles CORS requests. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
 
 
 # Contribution
