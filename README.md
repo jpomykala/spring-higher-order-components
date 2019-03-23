@@ -87,10 +87,10 @@ That's all!
 public class MySpringBootApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ApiApplication.class, args);
+    SpringApplication.run(MySpringBootApplication.class, args);
   }
 
-  // SEND BY EVENT PUBLISHING
+  // SEND E-MAIL BY EVENT PUBLISHING
   @Autowired
   private ApplicationEventPublisher eventPublisher;
 
@@ -105,7 +105,7 @@ public class MySpringBootApplication {
     eventPublisher.publishEvent(emailRequest);
   }
   
-  // SEND BY MAIL SERVICE
+  // SEND E-MAIL BY MAIL SERVICE
   @Autowired
   private MailService mailService;
 
