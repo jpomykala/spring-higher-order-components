@@ -283,7 +283,39 @@ public class MySpringBootApplication {
 
 ## @EnableCORS
 
-This annotation adds filter which handles CORS requests. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
+This annotation adds filter which handles CORS requests.
+
+### Example `application.yml` configuration
+
+```yml
+spring-hoc:
+  cors:
+    allow-credentials: true
+    allowed-origins:
+      - "https://my-frontend-application.com"
+      - "https://jpomykala.com"
+    allowed-methods:
+      - GET
+      - POST
+      - PATCH
+      - DELETE
+```
+
+By default CORS will accept all origins, all HTTP methods and all popular headers.
+
+### Example application
+
+```java
+@SpringBootApplication
+@EnableCORS
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(ApiApplication.class, args);
+  }
+
+}
+```
 
 
 # Contribution
