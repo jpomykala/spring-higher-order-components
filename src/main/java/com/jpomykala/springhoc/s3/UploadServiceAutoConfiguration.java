@@ -27,9 +27,4 @@ public class UploadServiceAutoConfiguration {
     return new UploadService(properties, amazonS3);
   }
 
-  @Bean
-  public UploadRequestListener uploadRequestListener(UploadService uploadService) {
-    return new UploadRequestListener(uploadService);
-  }
-
 }

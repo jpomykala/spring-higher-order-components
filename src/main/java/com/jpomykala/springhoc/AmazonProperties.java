@@ -5,23 +5,33 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import javax.validation.constraints.NotNull;
+
 @ConfigurationProperties(prefix = "spring-hoc.aws")
 public class AmazonProperties {
 
+  @NotNull
   private String accessKey;
+
+  @NotNull
   private String secretKey;
+
+  @NotNull
   private String region;
 
-  public void setAccessKey(String accessKey) {
+  public AmazonProperties setAccessKey(String accessKey) {
     this.accessKey = accessKey;
+    return this;
   }
 
-  public void setSecretKey(String secretKey) {
+  public AmazonProperties setSecretKey(String secretKey) {
     this.secretKey = secretKey;
+    return this;
   }
 
-  public void setRegion(String region) {
+  public AmazonProperties setRegion(String region) {
     this.region = region;
+    return this;
   }
 
   public String getAccessKey() {

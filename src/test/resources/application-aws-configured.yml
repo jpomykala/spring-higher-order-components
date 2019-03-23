@@ -1,0 +1,5 @@
+spring-hoc:
+  aws:
+    access-key: xxxxxxxx
+    secret-key: xxxxxxxx
+    region: eu-west-1
