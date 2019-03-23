@@ -4,6 +4,8 @@
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components)
 
+[![codecov](https://codecov.io/gh/jpomykala/spring-higher-order-components/branch/master/graph/badge.svg)](https://codecov.io/gh/jpomykala/spring-higher-order-components)
+
 Boilerplate components for Spring Boot. 
 - Sending e-mails with ease (Amazon SES)
 - Request logging 
