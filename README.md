@@ -65,7 +65,7 @@ Spring HOC will automatically create for you Amazon SES component if bean doesn'
 
 Use ``EmailRequest`` step builder to create request.
 
-```
+```java
 EmailRequest.builder()
             .to("jpomykala@example.com")
             .subject("Hey, I just met you and this is crazy")
@@ -81,7 +81,7 @@ That's all!
 
 ### Example application
 
-```
+```java
 @SpringBootApplication
 @EnableEmailSending
 public class MySpringBootApplication {
@@ -119,9 +119,7 @@ public class MySpringBootApplication {
 
     mailService.send(emailRequest);
   }
-
 }
-
 ```
 
 
