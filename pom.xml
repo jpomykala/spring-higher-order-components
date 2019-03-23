@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>me.jpomykala.hoc</groupId>
+    <groupId>com.jpomykala</groupId>
     <artifactId>spring-higher-order-components</artifactId>
-    <version>1.0.7</version>
+    <version>1.0.9-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -97,6 +97,16 @@
             <artifactId>jacoco-maven-plugin</artifactId>
             <version>0.8.3</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.7</version>
+            <scope>test</scope>
+        </dependency>
+
+
     </dependencies>
 
     <distributionManagement>

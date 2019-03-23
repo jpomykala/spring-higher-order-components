@@ -1,0 +1,16 @@
+spring-hoc:
+  cors:
+    allow-credentials: true
+    allowed-origins:
+      - "http://pornhub.com"
+      - "https://jpomykala.com"
+    allowed-methods:
+      - GET
+      - POST
+      - PATCH
+      - DELETE
+    allowed-headers:
+      - Content-Type
+    exposed-headers:
+      - Content-Type
+    max-age: 20
