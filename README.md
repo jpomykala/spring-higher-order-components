@@ -140,7 +140,7 @@ Adds logging requests, populate MDC with:
 public class MySpringBootApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ApiApplication.class, args);
+    SpringApplication.run(MySpringBootApplication.class, args);
   }
 
   @Autowired
@@ -210,7 +210,7 @@ This properties are **required.***
 public class MySpringBootApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ApiApplication.class, args);
+    SpringApplication.run(MySpringBootApplication.class, args);
   }
 
   @Autowired
@@ -259,7 +259,7 @@ Response wrapping can be disabled for specific endpoinds by using `@DisableWrapp
 public class MySpringBootApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ApiApplication.class, args);
+    SpringApplication.run(MySpringBootApplication.class, args);
   }
 
   @GetMapping("/wrap-pojo")
@@ -318,7 +318,7 @@ By default CORS will accept all origins, all HTTP methods and all popular header
 public class MySpringBootApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ApiApplication.class, args);
+    SpringApplication.run(MySpringBootApplication.class, args);
   }
 
 }
