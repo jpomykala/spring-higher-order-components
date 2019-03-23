@@ -47,6 +47,18 @@ This component gives you simple API to send emails using Amazon SES service.
 - Provide **verified** sender email address ``spring-hoc.mail.sender-email-address``
 - Provide AWS credentials ``spring-hoc.aws.access-token``, ``spring-hoc.aws.secret-key``, ``spring-hoc.aws.region``
 
+#### Example `application.yml`
+
+```
+spring-hoc:
+  aws:
+    access-token: xxxxxxxx
+    secret-key: xxxxxxxx
+    region: eu-west-1
+  mail:
+    sender-email-address: no-reply@mydomain.com    
+```
+
 Spring HOC will automatically create for you Amazon SES component if bean doesn't exit.
 
 ### How to send e-mail?
@@ -66,6 +78,52 @@ Now it's time to send email. You have 2 options here.
 - Publish ``EmailRequest`` using ``ApplicationEventPublisher``
 
 That's all!
+
+### Example application
+
+```
+@SpringBootApplication
+@EnableEmailSending
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(ApiApplication.class, args);
+  }
+
+  // SEND BY EVENT PUBLISHING
+  @Autowired
+  private ApplicationEventPublisher eventPublisher;
+
+  @GetMapping("/send-email-by-event-publishing")
+  public void sendEmailByEventPublishing(){
+    EmailRequest emailRequest = EmailRequest.builder()
+            .to("jakub.pomykala@gmail.com")
+            .subject("Hey, I just met you and this is crazy")
+            .body("But here's my number, so call me maybe")
+            .build();
+
+    eventPublisher.publishEvent(emailRequest);
+  }
+  
+  // SEND BY MAIL SERVICE
+  @Autowired
+  private MailService mailService;
+
+  @GetMapping("/send-email-by-mail-service")
+  public void sendEmailByMailService(){
+    EmailRequest emailRequest = EmailRequest.builder()
+            .to("jakub.pomykala@gmail.com")
+            .subject("Hey, I just met you and this is crazy")
+            .body("But here's my number, so call me maybe")
+            .build();
+
+    mailService.send(emailRequest);
+  }
+
+}
+
+```
+
 
 ## @EnableRequestLogging
 
