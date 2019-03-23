@@ -198,7 +198,7 @@ spring-hoc:
     secret-key: xxxxxxxx
     region: eu-west-1  
 ```
-AWS credentials are needed for S3 file uploading.
+This properties are **required.***
 
 ### Example application with files uploading
 
@@ -304,7 +304,7 @@ spring-hoc:
       - PATCH
       - DELETE
 ```
-
+This properties are **optional.***
 By default CORS will accept all origins, all HTTP methods and all popular headers.
 
 ### Example application with CORS filter
