@@ -4,7 +4,6 @@ package com.jpomykala.springhoc.s3;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.jpomykala.springhoc.s3.model.UploadRequest;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotNull;
@@ -18,15 +17,12 @@ public class UploadService {
 
   private final AmazonS3Properties properties;
   private final AmazonS3 amazonS3;
-  private ApplicationEventPublisher eventPublisher;
 
   public UploadService(
           AmazonS3Properties properties,
-          AmazonS3 amazonS3,
-          ApplicationEventPublisher eventPublisher) {
+          AmazonS3 amazonS3) {
     this.properties = properties;
     this.amazonS3 = amazonS3;
-    this.eventPublisher = eventPublisher;
   }
 
   public String upload(@NotNull UploadRequest uploadRequest) {
