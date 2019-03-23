@@ -47,14 +47,14 @@ This component gives you simple API to send emails using Amazon SES service. Spr
 ### Configuration
 
 - Provide **verified** sender email address ``spring-hoc.mail.sender-email-address``
-- Provide AWS credentials ``spring-hoc.aws.access-token``, ``spring-hoc.aws.secret-key``, ``spring-hoc.aws.region``
+- Provide AWS credentials ``spring-hoc.aws.access-key``, ``spring-hoc.aws.secret-key``, ``spring-hoc.aws.region``
 
 #### Example `application.yml` configuration for e-mail sending
 
 ```yml
 spring-hoc:
   aws:
-    access-token: xxxxxxxx
+    access-key: xxxxxxxx
     secret-key: xxxxxxxx
     region: eu-west-1
   mail:
@@ -194,7 +194,7 @@ This annotation autoconfigures Amazon S3 component if bean doesn't exit.
 ```
 spring-hoc:
   aws:
-    access-token: xxxxxxxx
+    access-key: xxxxxxxx
     secret-key: xxxxxxxx
     region: eu-west-1  
 ```
