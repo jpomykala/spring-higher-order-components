@@ -1,43 +1,43 @@
 package com.jpomykala.springhoc.utils;
 
 
+import org.springframework.util.StringUtils;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
-public class RequestUtils {
+public final class RequestUtils {
+
+  private RequestUtils() {
+    //hidden constructor
+  }
 
   public static String getClientIP(HttpServletRequest request) {
-    String defaultOutput = "UNKNOWN";
+    String defaultOutput = "127.0.0.1";
     if (request == null) {
       return defaultOutput;
     }
 
     String xfHeader = request.getHeader("X-Forwarded-For");
-    if (xfHeader == null) {
-      return request.getRemoteAddr();
+    if (!StringUtils.isEmpty(xfHeader)) {
+      String[] split = xfHeader.split(",");
+      if (split.length > 0) {
+        return split[0];
+      }
     }
 
-    try {
-      return xfHeader.split(",")[0];
-    } catch (Exception e) {
-      return defaultOutput;
+    String remoteAddr = request.getRemoteAddr();
+    if (!StringUtils.isEmpty(remoteAddr)) {
+      return remoteAddr;
     }
+    return defaultOutput;
   }
 
   public static String getPath(HttpServletRequest request) {
     Optional<HttpServletRequest> optionalRequest = Optional.ofNullable(request);
-    String requestUrl = optionalRequest
+    return optionalRequest
             .map(HttpServletRequest::getRequestURL)
             .map(StringBuffer::toString)
             .orElse("<no_path>");
-    String queryString = optionalRequest
-            .map(HttpServletRequest::getQueryString)
-            .orElse("");
-
-    if (queryString.isEmpty()) {
-      return requestUrl + "?" + queryString;
-    }
-
-    return requestUrl;
   }
 }
