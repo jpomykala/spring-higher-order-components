@@ -9,7 +9,7 @@
 Boilerplate components for Spring Boot. 
 - [x] [E-mail sending with step builder](#enableemailsending-annotation)
 - [x] [Request logging](#enablerequestlogging-annotation)
-- [x] [Uploading files to Amazon S3](#enablefileuploading-annotation)
+- [x] [Files uploading to Amazon S3](#enablefileuploading-annotation)
 - [x] [Response wrapping](#enableresponsewrapping-annotation)
 - [x] [Easy to use CORS filter](#enablecors-annotation)
 
