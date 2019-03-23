@@ -14,7 +14,7 @@ Boilerplate components for Spring Boot.
 - Custom CORS filter
 
 ## Installation
-```
+```xml
 <dependency>
   <groupId>com.jpomykala</groupId>
   <artifactId>spring-higher-order-components</artifactId>
@@ -49,7 +49,7 @@ This component gives you simple API to send emails using Amazon SES service.
 
 #### Example `application.yml`
 
-```
+```yml
 spring-hoc:
   aws:
     access-token: xxxxxxxx
@@ -129,7 +129,39 @@ Adds logging requests, populate MDC with:
 - user (IP address by default)
 - requestId (UUID by default).
 
+### Example application
+
+```java
+@SpringBootApplication
+@EnableRequestLogging
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(ApiApplication.class, args);
+  }
+
+  @Autowired
+  private MyUserService userService;
+
+  // [OPTIONAL] customize configuration
+  @Bean
+  public LoggingFilter loggingFilter(LoggingFilterFactory loggingFilterFactory) {
+    return loggingFilterFactory
+            .withPrincipalProvider(new PrincipalProvider() {
+              @Override
+              public String getPrincipal(HttpServletRequest request) {
+                return userService.findUserName(request);
+              }
+            })
+            .createFilter();
+  }
+}
+
 ```
+
+
+### More customization
+```java
 @Bean
 public LoggingFilter loggingFilter(LoggingFilterFactory loggingFilterFactory){
   return loggingFilterFactory
