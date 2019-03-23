@@ -7,11 +7,11 @@
 [![codecov](https://codecov.io/gh/jpomykala/spring-higher-order-components/branch/master/graph/badge.svg)](https://codecov.io/gh/jpomykala/spring-higher-order-components)
 
 Boilerplate components for Spring Boot. 
-- [x] E-mail sending with step builder 
-- [x] Request logging
-- [x] Uploading files to Amazon S3 
-- [x] Response wrapping
-- [x] Easy to use CORS filter
+- [x] [E-mail sending with step builder](#enableemailsending-annotation)
+- [x] [Request logging](#enablerequestlogging-annotation)
+- [x] [Uploading files to Amazon S3](#enablefileuploading-annotation)
+- [x] [Response wrapping](#enableresponsewrapping-annotation)
+- [x] [Easy to use CORS filter](#enablecors-annotation)
 
 ## Installation
 ```xml
