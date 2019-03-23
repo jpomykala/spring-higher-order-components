@@ -81,4 +81,15 @@ public class UploadServiceTest {
             .containsIgnoringCase("my-test-bucket")
             .startsWith("https://");
   }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void shouldTrowWhen0Bytes() throws Exception {
+    //given
+    byte[] bytes = TestByteUtility.generateRandomByteStream(0);
+
+    //when
+    uploadService.upload(bytes);
+
+    //then
+  }
 }
