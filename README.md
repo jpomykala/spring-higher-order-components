@@ -196,7 +196,9 @@ spring-hoc:
   aws:
     access-key: xxxxxxxx
     secret-key: xxxxxxxx
-    region: eu-west-1  
+    region: eu-west-1
+  s3:
+    bucket-name: my-bucket
 ```
 This properties are **required.***
 
