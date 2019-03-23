@@ -3,7 +3,7 @@ jdk:
   - oraclejdk8
 install: mvn --settings .maven.xml clean install -Dgpg.skip -Dmaven.javadoc.skip=true -Ptest -B -V
 after_success:
-  - mvn --settings .maven.xml jacoco:report && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
+  - mvn --settings .maven.xml clean test && bash <(curl -s https://codecov.io/bash) || echo "Codecov did not collect coverage reports"
 
 cache:
   directories:
