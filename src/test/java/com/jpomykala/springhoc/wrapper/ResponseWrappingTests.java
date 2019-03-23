@@ -1,8 +1,8 @@
 package com.jpomykala.springhoc.wrapper;
 
 import org.assertj.core.util.Lists;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.autoconfigure.context.PropertyPlaceholderAutoConfiguration;
 import org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletAutoConfiguration;
@@ -31,7 +31,7 @@ public class ResponseWrappingTests {
 
   private MockMvc mockMvc;
 
-  @BeforeEach
+  @Before
   public void setup() {
     this.mockMvc = MockMvcBuilders
             .standaloneSetup(ExampleController.class)

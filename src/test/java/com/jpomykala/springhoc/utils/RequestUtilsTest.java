@@ -1,14 +1,15 @@
 package com.jpomykala.springhoc.utils;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletRequest;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-class RequestUtilsTest {
+
+public class RequestUtilsTest {
 
   @Test
-  void getClientRemoteAddress() {
+  public void getClientRemoteAddress() {
     //given
     MockHttpServletRequest mockServerHttpRequest = new MockHttpServletRequest();
     mockServerHttpRequest.setServerName("https://example.com");
@@ -24,7 +25,7 @@ class RequestUtilsTest {
   }
 
   @Test
-  void getClientXForwardedFor() {
+  public void getClientXForwardedFor() {
     //given
     MockHttpServletRequest mockServerHttpRequest = new MockHttpServletRequest();
     mockServerHttpRequest.setServerName("https://example.com");
@@ -41,7 +42,7 @@ class RequestUtilsTest {
   }
 
   @Test
-  void getPath() {
+  public void getPath() {
     //given
     MockHttpServletRequest mockServerHttpRequest = new MockHttpServletRequest();
     mockServerHttpRequest.setServerName("example.com");
