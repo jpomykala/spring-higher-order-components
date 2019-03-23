@@ -100,7 +100,7 @@ public class MySpringBootApplication {
   public void sendEmailByEventPublishing(){
     EmailRequest emailRequest = EmailRequest.builder()
             .to("jakub.pomykala@gmail.com")
-            .subject("Hey, I just met you and this is crazy")
+            .subject("Hey, I just met you and this is crazy [event publishing]")
             .body("But here's my number, so call me maybe")
             .build();
 
@@ -115,7 +115,7 @@ public class MySpringBootApplication {
   public void sendEmailByMailService(){
     EmailRequest emailRequest = EmailRequest.builder()
             .to("jakub.pomykala@gmail.com")
-            .subject("Hey, I just met you and this is crazy")
+            .subject("Hey, I just met you and this is crazy [mail service]")
             .body("But here's my number, so call me maybe")
             .build();
 
