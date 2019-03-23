@@ -22,7 +22,7 @@ Boilerplate components for Spring Boot.
 </dependency>
 ```
 
-[Check in maven repository](https://mvnrepository.com/artifact/me.jpomykala.hoc/spring-higher-order-components)
+[Check version in maven repository](https://mvnrepository.com/artifact/me.jpomykala.hoc/spring-higher-order-components)
 
 ## Motivation
 
@@ -37,6 +37,8 @@ Boilerplate components for Spring Boot.
 - Create external open source library (we are here now)
 
 source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices-are-something-you-grow-into-not-begin-with)
+
+*** 
 
 ## `@EnableEmailSending` annotation
 
@@ -90,7 +92,7 @@ public class MySpringBootApplication {
     SpringApplication.run(MySpringBootApplication.class, args);
   }
 
-  // SEND E-MAIL BY EVENT PUBLISHING
+  // Send e-mail by event publishing, Spring HOC will listen to EmailRequest objects 
   @Autowired
   private ApplicationEventPublisher eventPublisher;
 
@@ -105,7 +107,7 @@ public class MySpringBootApplication {
     eventPublisher.publishEvent(emailRequest);
   }
   
-  // SEND E-MAIL BY MAIL SERVICE
+  // Send e-mail by mail service provided by Spring HOC and @EnableEmailSending annotation
   @Autowired
   private MailService mailService;
 
@@ -122,6 +124,7 @@ public class MySpringBootApplication {
 }
 ```
 
+*** 
 
 ## `@EnableRequestLogging` annotation
 
@@ -172,6 +175,8 @@ public LoggingFilter loggingFilter(LoggingFilterFactory loggingFilterFactory){
 }
 ```
 
+*** 
+
 ## `@EnableFileUploading` annotation
 
 This annotation autoconfigures Amazon S3 component if bean doesn't exit.
@@ -216,6 +221,8 @@ public class MySpringBootApplication {
   }
 }
 ```
+
+*** 
 
 ## `@EnableResponseWrapping` annotation
 
@@ -276,6 +283,7 @@ public class MySpringBootApplication {
 }
 ```
 
+*** 
 
 ## `@EnableCORS` annotation
 
