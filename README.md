@@ -2,19 +2,19 @@
 
 [![Build Status](https://travis-ci.org/jpomykala/spring-higher-order-components.svg?branch=master)](https://travis-ci.org/jpomykala/spring-higher-order-components)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components)
 
 [![codecov](https://codecov.io/gh/jpomykala/spring-higher-order-components/branch/master/graph/badge.svg)](https://codecov.io/gh/jpomykala/spring-higher-order-components)
 
 Boilerplate components for Spring Boot. 
-- Sending e-mails with ease (Amazon SES)
-- Request logging 
-- Uploading files to Amazon S3
-- Response wrapping
-- Custom CORS filter
+- [x] [E-mail sending with step builder](#enableemailsending-annotation)
+- [x] [Request logging](#enablerequestlogging-annotation)
+- [x] [Files uploading to Amazon S3](#enablefileuploading-annotation)
+- [x] [Response wrapping](#enableresponsewrapping-annotation)
+- [x] [Easy to use CORS filter](#enablecors-annotation)
 
 ## Installation
-```
+```xml
 <dependency>
   <groupId>com.jpomykala</groupId>
   <artifactId>spring-higher-order-components</artifactId>
@@ -22,7 +22,7 @@ Boilerplate components for Spring Boot.
 </dependency>
 ```
 
-[Check in maven repository](https://mvnrepository.com/artifact/me.jpomykala.hoc/spring-higher-order-components)
+[Check version in maven repository](https://mvnrepository.com/artifact/me.jpomykala.hoc/spring-higher-order-components)
 
 ## Motivation
 
@@ -38,22 +38,36 @@ Boilerplate components for Spring Boot.
 
 source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices-are-something-you-grow-into-not-begin-with)
 
-## @EnableEmailSending
+*** 
 
-This component gives you simple API to send emails using Amazon SES service. 
+## `@EnableEmailSending` annotation
+
+This component gives you simple API to send emails using Amazon SES service. Spring HOC will automatically create for you Amazon SES component if bean doesn't exit.
 
 ### Configuration
 
 - Provide **verified** sender email address ``spring-hoc.mail.sender-email-address``
-- Provide AWS credentials ``spring-hoc.aws.access-token``, ``spring-hoc.aws.secret-key``, ``spring-hoc.aws.region``
+- Provide AWS credentials ``spring-hoc.aws.access-key``, ``spring-hoc.aws.secret-key``, ``spring-hoc.aws.region``
 
-Spring HOC will automatically create for you Amazon SES component if bean doesn't exit.
+#### Example `application.yml` configuration for e-mail sending
+
+```yml
+spring-hoc:
+  aws:
+    access-key: xxxxxxxx
+    secret-key: xxxxxxxx
+    region: eu-west-1
+  mail:
+    sender-email-address: no-reply@mydomain.com    
+```
+This properties are **required**.
+
 
 ### How to send e-mail?
 
 Use ``EmailRequest`` step builder to create request.
 
-```
+```java
 EmailRequest.builder()
             .to("jpomykala@example.com")
             .subject("Hey, I just met you and this is crazy")
@@ -67,13 +81,90 @@ Now it's time to send email. You have 2 options here.
 
 That's all!
 
-## @EnableRequestLogging
+### Example application with sending email (SES)
+
+```java
+@SpringBootApplication
+@EnableEmailSending
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(MySpringBootApplication.class, args);
+  }
+
+  // Send e-mail by event publishing, Spring HOC will listen to EmailRequest objects 
+  @Autowired
+  private ApplicationEventPublisher eventPublisher;
+
+  @GetMapping("/send-email-by-event-publishing")
+  public void sendEmailByEventPublishing(){
+    EmailRequest emailRequest = EmailRequest.builder()
+            .to("jakub.pomykala@gmail.com")
+            .subject("Hey, I just met you and this is crazy [event publishing]")
+            .body("But here's my number, so call me maybe")
+            .build();
+
+    eventPublisher.publishEvent(emailRequest);
+  }
+  
+  // Send e-mail by mail service provided by Spring HOC and @EnableEmailSending annotation
+  @Autowired
+  private MailService mailService;
+
+  @GetMapping("/send-email-by-mail-service")
+  public void sendEmailByMailService(){
+    EmailRequest emailRequest = EmailRequest.builder()
+            .to("jakub.pomykala@gmail.com")
+            .subject("Hey, I just met you and this is crazy [mail service]")
+            .body("But here's my number, so call me maybe")
+            .build();
+
+    mailService.send(emailRequest);
+  }
+}
+```
+
+*** 
+
+## `@EnableRequestLogging` annotation
 
 Adds logging requests, populate MDC with:
 - user (IP address by default)
 - requestId (UUID by default).
 
+### Example application with request logging
+
+```java
+@SpringBootApplication
+@EnableRequestLogging
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(ApiApplication.class, args);
+  }
+
+  @Autowired
+  private MyUserService userService;
+
+  // [OPTIONAL] customize configuration
+  @Bean
+  public LoggingFilter loggingFilter(LoggingFilterFactory loggingFilterFactory) {
+    return loggingFilterFactory
+            .withPrincipalProvider(new PrincipalProvider() {
+              @Override
+              public String getPrincipal(HttpServletRequest request) {
+                return userService.findUserName(request);
+              }
+            })
+            .createFilter();
+  }
+}
+
 ```
+
+
+### Customization of request logging
+```java
 @Bean
 public LoggingFilter loggingFilter(LoggingFilterFactory loggingFilterFactory){
   return loggingFilterFactory
@@ -84,7 +175,9 @@ public LoggingFilter loggingFilter(LoggingFilterFactory loggingFilterFactory){
 }
 ```
 
-## @EnableFileUploading
+*** 
+
+## `@EnableFileUploading` annotation
 
 This annotation autoconfigures Amazon S3 component if bean doesn't exit.
 
@@ -96,22 +189,44 @@ This annotation autoconfigures Amazon S3 component if bean doesn't exit.
 - ``void upload(byte[] bytes, String fileKey, ObjectMetadata metadata)``
 - ``String upload(byte[] bytes)`` // path is autogenerated (sha256 hash)
 
-## example ``application.yml`` configuration
+### Example ``application.yml`` configuration for file uploading
 
 ```
 spring-hoc:
   aws:
-    access-token: xxxxxxxx
+    access-key: xxxxxxxx
     secret-key: xxxxxxxx
     region: eu-west-1
-  cors:
-    allowed-origins:
-      - "http://localhost:3000"
-  mail:
-    sender-email-address: xxxxx@xxxx.com    
+  s3:
+    bucket-name: my-bucket
+```
+This properties are **required.***
+
+### Example application with files uploading
+
+```java
+@SpringBootApplication
+@EnableFileUploading
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(ApiApplication.class, args);
+  }
+
+  @Autowired
+  private UploadService uploadService;
+
+  @GetMapping("/upload-file")
+  public String uploadFile(@RequestBody MultipartFile multipartFile) throws IOException {
+    String s3DownloadUrl = uploadService.upload(multipartFile);
+    return s3DownloadUrl;
+  }
+}
 ```
 
-## @EnableResponseWrapping
+*** 
+
+## `@EnableResponseWrapping` annotation
 
 Every `@RestController` output will be wrapped into `RestResponse<T>` object for JSON it will look like as follows:
 
@@ -136,9 +251,78 @@ Every output will be wrapped into `RestResponse` [see this issue](https://github
 
 Response wrapping can be disabled for specific endpoinds by using `@DisableWrapping` annotation on method.
 
-## @EnableCORS
+### Example application with response wrapping
 
-This annotation adds filter which handles CORS requests. Right now you can configure only allowed origins using ``application.yml`` See example configuration below.
+```java
+@SpringBootApplication
+@EnableResponseWrapping
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(ApiApplication.class, args);
+  }
+
+  @GetMapping("/wrap-pojo")
+  public MyPojo wrapResponse() {
+    MySpringBootApplication.MyPojo myPojo = new MyPojo("Jakub", "Pomykala");
+    return myPojo;
+  }
+  
+  @Autowired
+  private MyPojoRepository myPojoRepository;
+
+  @GetMapping("/wrap-pojo-page")
+  public Page<MyPojo> wrapPageResponse() {
+    Page<MyPojo> myPojos = myPojoRepository.findAll();
+    return myPojos;
+  }
+  
+  public class MyPojo {
+    private String firstName;
+    private String lastName;
+    // getters and setters
+  }
+}
+```
+
+*** 
+
+## `@EnableCORS` annotation
+
+This annotation adds filter which handles CORS requests.
+
+### Example `application.yml` configuration for CORS
+
+```yml
+spring-hoc:
+  cors:
+    allow-credentials: true
+    allowed-origins:
+      - "https://my-frontend-application.com"
+      - "https://jpomykala.com"
+    allowed-methods:
+      - GET
+      - POST
+      - PATCH
+      - DELETE
+```
+This properties are **optional.**
+
+By default CORS will accept all origins, all HTTP methods and all popular headers.
+
+### Example application with CORS filter
+
+```java
+@SpringBootApplication
+@EnableCORS
+public class MySpringBootApplication {
+
+  public static void main(String[] args) {
+    SpringApplication.run(ApiApplication.class, args);
+  }
+
+}
+```
 
 
 # Contribution
