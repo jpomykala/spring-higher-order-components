@@ -304,7 +304,8 @@ spring-hoc:
       - PATCH
       - DELETE
 ```
-This properties are **optional.***
+This properties are **optional.**
+
 By default CORS will accept all origins, all HTTP methods and all popular headers.
 
 ### Example application with CORS filter
