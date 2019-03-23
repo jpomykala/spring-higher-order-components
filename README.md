@@ -4,10 +4,10 @@
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components)
 
-Boilerplate components for AWS and Spring Boot. 
-- Sending e-mails with ease
+Boilerplate components for Spring Boot. 
+- Sending e-mails with ease (Amazon SES)
 - Request logging 
-- Uploading files to S3
+- Uploading files to Amazon S3
 - Response wrapping
 - Custom CORS filter
 
