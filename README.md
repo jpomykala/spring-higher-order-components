@@ -2,22 +2,19 @@
 
 [![Build Status](https://travis-ci.org/jpomykala/spring-higher-order-components.svg?branch=master)](https://travis-ci.org/jpomykala/spring-higher-order-components)
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/me.jpomykala.hoc/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components)
 
-Boilerplate components for AWS and Spring Boot. 
-- Sending e-mails with step builder
+Boilerplate components for Spring Boot. 
+- Sending e-mails with ease (Amazon SES)
 - Request logging 
-- Uploading files to S3
+- Uploading files to Amazon S3
 - Response wrapping
 - Custom CORS filter
-- Simple OAuth2 configuration [soon]
-
-
 
 ## Installation
 ```
 <dependency>
-  <groupId>me.jpomykala.hoc</groupId>
+  <groupId>com.jpomykala</groupId>
   <artifactId>spring-higher-order-components</artifactId>
   <version>{spring-hoc.version}</version>
 </dependency>
