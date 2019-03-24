@@ -336,6 +336,8 @@ Would you like to add something or improve source? Create new issue, let's discu
 - Try to make your commits as atomic as possible. Related changes to three files should be committed in one commit.
 - Try not to modify anything unrelated.
 
+Source: https://github.com/jOOQ/jOOQ
+
 # More
 - Follow me on [Twitter](https://twitter.com/jakub_pomykala) :)
 - Check out my [website](https://jpomykala.github.io)
