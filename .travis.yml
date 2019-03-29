@@ -19,7 +19,7 @@ before_install:
 
 deploy:
   provider: script
-  script: mvn --settings .maven.xml clean deploy -DskipTests=true -B -U -Prelease
+  script: mvn versions:set -DremoveSnapshot && mvn --settings .maven.xml clean deploy -DskipTests=true -B -U -Prelease
   skip_cleanup: true
   on:
     repo: jpomykala/spring-higher-order-components

@@ -5,7 +5,7 @@
 
     <groupId>com.jpomykala</groupId>
     <artifactId>spring-higher-order-components</artifactId>
-    <version>1.0.10</version>
+    <version>1.0.11-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -93,15 +93,12 @@
             <version>0.8.3</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.7</version>
             <scope>test</scope>
         </dependency>
-
-
     </dependencies>
 
     <distributionManagement>
