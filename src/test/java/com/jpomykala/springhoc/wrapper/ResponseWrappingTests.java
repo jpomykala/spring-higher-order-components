@@ -15,6 +15,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -69,6 +70,18 @@ public class ResponseWrappingTests {
             .andDo(MockMvcResultHandlers.print());
   }
 
+  @Test
+  public void testWrapperWithNotWrappedResponseEntity() throws Exception {
+    this.mockMvc
+            .perform(get("/not-wrapped"))
+            .andExpect(status().isOk())
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+            .andExpect(jsonPath("$.name").value("Jakub"))
+            .andExpect(jsonPath("$.age").value(24))
+            .andDo(MockMvcResultHandlers.print());
+  }
+
+
   @Target(ElementType.TYPE)
   @Retention(RetentionPolicy.RUNTIME)
   @Documented
@@ -101,6 +114,15 @@ public class ResponseWrappingTests {
       PageRequest pageRequest = PageRequest.of(0, 1, Sort.Direction.ASC, "name");
       return new PageImpl(singleElementList, pageRequest, 1L);
     }
+
+
+    @GetMapping("/not-wrapped")
+    public ResponseEntity<SamplePojo> responseEntityEcho() {
+      SamplePojo jakub = new SamplePojo();
+      jakub.setName("Jakub");
+      jakub.setAge(24);
+      return ResponseEntity.ok(jakub);
+    }
   }
 
   protected static class SamplePojo {
@@ -119,12 +141,12 @@ public class ResponseWrappingTests {
       return name;
     }
 
-    public int getAge() {
-      return age;
-    }
-
     public void setName(String name) {
       this.name = name;
+    }
+
+    public int getAge() {
+      return age;
     }
 
     public void setAge(int age) {

@@ -11,4 +11,6 @@ import java.lang.annotation.*;
 @Import({ResponseWrapper.class})
 public @interface EnableResponseWrapping {
 
+  Class<?>[] exclude() default {};
+
 }

@@ -7,6 +7,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,6 +40,14 @@ public class TestWrapperApplication extends SpringBootServletInitializer {
     List<MyPojo> pojoList = Lists.newArrayList(jakub, nieMaJajek);
     int totalElements = pojoList.size();
     return new PageImpl<>(pojoList, Pageable.unpaged(), totalElements);
+  }
+
+  @GetMapping("/response-entity-echo")
+  public ResponseEntity<MyPojo> responseEntityEcho() {
+    MyPojo jakub = new MyPojo()
+            .setFirstName("Jakub")
+            .setLastName("Pomykała");
+    return ResponseEntity.ok(jakub);
   }
 
 
