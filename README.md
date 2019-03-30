@@ -12,7 +12,7 @@ Boilerplate components for Spring Boot.
 - [x] [Files uploading to Amazon S3](#enablefileuploading-annotation)
 - [x] [Response wrapping](#enableresponsewrapping-annotation) (works with Swagger / SpringFox!)
 - [x] [Easy to use CORS filter](#enablecors-annotation)
-- [ ] [Rate limiter] (in progress)
+- [ ] Rate limiter (in progress)
 
 ## Installation
 ```xml
