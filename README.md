@@ -1,4 +1,4 @@
-![spring-hoc](https://i.imgur.com/45e0VDl.png)
+![spring-hoc](https://i.imgur.com/8LA1Xcp.png)
 
 [![Build Status](https://travis-ci.org/jpomykala/spring-higher-order-components.svg?branch=master)](https://travis-ci.org/jpomykala/spring-higher-order-components)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components)
