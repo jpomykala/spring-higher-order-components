@@ -1,10 +1,9 @@
-# Spring Higher-Order Components
+![spring-hoc](https://i.imgur.com/45e0VDl.png)
 
 [![Build Status](https://travis-ci.org/jpomykala/spring-higher-order-components.svg?branch=master)](https://travis-ci.org/jpomykala/spring-higher-order-components)
-
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.jpomykala/spring-higher-order-components)
-
 [![codecov](https://codecov.io/gh/jpomykala/spring-higher-order-components/branch/master/graph/badge.svg)](https://codecov.io/gh/jpomykala/spring-higher-order-components)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4fc54f7f19a610dc5d42/maintainability)](https://codeclimate.com/github/jpomykala/spring-higher-order-components/maintainability)
 
 Boilerplate components for Spring Boot. 
 - [x] [E-mail sending with step builder](#enableemailsending-annotation)
