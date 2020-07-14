@@ -38,6 +38,10 @@ Boilerplate components for Spring Boot.
 
 source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices-are-something-you-grow-into-not-begin-with)
 
+## Used by
+
+[![simplelocalize](https://i.imgur.com/KIk2f6e.png)](https://simplelocalize.io)
+
 *** 
 
 ## `@EnableEmailSending` annotation
