@@ -46,7 +46,7 @@ source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices
 
 ## `@EnableEmailSending` annotation
 
-This component gives you simple API to send emails using Amazon SES service. Spring HOC will automatically create for you Amazon SES component if bean doesn't exit.
+This component gives you simple API to send emails using Amazon SES service. Spring HOC will automatically create for you Amazon SES component if bean doesn't exist.
 
 ### Configuration
 
@@ -62,10 +62,13 @@ spring-hoc:
     secret-key: xxxxxxxx
     region: eu-west-1
   mail:
-    sender-email-address: no-reply@mydomain.com    
+    sender-email-address: "no-reply@mydomain.com"    
 ```
 This properties are **required**.
 
+#### Tip
+You can put `My Company Name <no-reply@mydomain.com>` in `sender-email-address` property to show "My Company Name" in e-mail apps instead plain e-mail.
+Reference: https://docs.aws.amazon.com/ses/latest/DeveloperGuide/send-email-concepts-email-format.html
 
 ### How to send e-mail?
 
