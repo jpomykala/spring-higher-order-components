@@ -18,11 +18,11 @@ Boilerplate components for Spring Boot.
 <dependency>
   <groupId>com.jpomykala</groupId>
   <artifactId>spring-higher-order-components</artifactId>
-  <version>{spring-hoc.version}</version>
+  <version>1.0.11/version>
 </dependency>
 ```
 
-[Check version in maven repository](https://mvnrepository.com/artifact/me.jpomykala.hoc/spring-higher-order-components)
+[Check version in maven repository](https://mvnrepository.com/artifact/com.jpomykala/spring-higher-order-components)
 
 ## Motivation
 
