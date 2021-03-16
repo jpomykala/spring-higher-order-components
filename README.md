@@ -40,7 +40,11 @@ source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices
 
 ## Used by
 
-[![simplelocalize](https://i.imgur.com/KIk2f6e.png)](https://simplelocalize.io)
+[![simplelocalize](https://i.imgur.com/KIk2f6e.png)](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=logo)
+- [Translate your e-mails](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=translate_emails)
+- [Manage translations in Java Proprties](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=manage_translations)
+- [Get started with localization API](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=localization_api)
+- [Translation management](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=translation_management)
 
 *** 
 
