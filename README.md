@@ -18,7 +18,7 @@ Boilerplate components for Spring Boot.
 <dependency>
   <groupId>com.jpomykala</groupId>
   <artifactId>spring-higher-order-components</artifactId>
-  <version>1.0.11/version>
+  <version>1.0.11</version>
 </dependency>
 ```
 
