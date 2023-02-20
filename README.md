@@ -341,8 +341,8 @@ Would you like to add something or improve source? Create new issue, let's discu
 Source: https://github.com/jOOQ/jOOQ
 
 # More
-- Follow me on [Twitter](https://twitter.com/jakub_pomykala) :)
-- Check out my [website](https://jpomykala.github.io)
+
+- Check out my [website](https://jpomykala.com)
 
 # License
 GNU General Public License v3.0
