@@ -11,7 +11,6 @@ Boilerplate components for Spring Boot.
 - [x] [Files uploading to Amazon S3](#enablefileuploading-annotation)
 - [x] [Response wrapping](#enableresponsewrapping-annotation) (works with Swagger / SpringFox!)
 - [x] [Easy to use CORS filter](#enablecors-annotation)
-- [ ] Rate limiter (in progress)
 
 ## Installation
 ```xml
@@ -37,14 +36,6 @@ Boilerplate components for Spring Boot.
 - Create external open source library (we are here now)
 
 source: [https://nickjanetakis.com](https://nickjanetakis.com/blog/microservices-are-something-you-grow-into-not-begin-with)
-
-## Used by
-
-[![simplelocalize](https://i.imgur.com/KIk2f6e.png)](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=logo)
-- [Translate your e-mails](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=translate_emails)
-- [Manage translations in Java Proprties](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=manage_translations)
-- [Get started with localization API](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=localization_api)
-- [Translation management](https://simplelocalize.io/docs/api/get-started/?utm_source=github&utm_medium=link&utm_campaign=spring_hoc&utm_content=translation_management)
 
 *** 
 
@@ -350,8 +341,8 @@ Would you like to add something or improve source? Create new issue, let's discu
 Source: https://github.com/jOOQ/jOOQ
 
 # More
-- Follow me on [Twitter](https://twitter.com/jakub_pomykala) :)
-- Check out my [website](https://jpomykala.github.io)
+
+- Check out my [website](https://jpomykala.com)
 
 # License
 GNU General Public License v3.0
