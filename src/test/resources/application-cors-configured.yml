@@ -2,7 +2,7 @@ spring-hoc:
   cors:
     allow-credentials: true
     allowed-origins:
-      - "http://pornhub.com"
+      - "http://google.com"
       - "https://jpomykala.com"
     allowed-methods:
       - GET

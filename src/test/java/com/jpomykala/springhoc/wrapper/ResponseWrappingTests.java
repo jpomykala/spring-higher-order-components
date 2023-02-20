@@ -45,7 +45,7 @@ public class ResponseWrappingTests {
     this.mockMvc
             .perform(get("/examples/1"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.msg").value("OK"))
             .andExpect(jsonPath("$.status").value(200))
             .andExpect(jsonPath("$.data.name").value("Example"))
@@ -59,7 +59,7 @@ public class ResponseWrappingTests {
     this.mockMvc
             .perform(get("/examples"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.msg").value("OK"))
             .andExpect(jsonPath("$.status").value(200))
             .andExpect(jsonPath("$.data[0].name").value("Example"))
@@ -75,7 +75,7 @@ public class ResponseWrappingTests {
     this.mockMvc
             .perform(get("/not-wrapped"))
             .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
+            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
             .andExpect(jsonPath("$.name").value("Jakub"))
             .andExpect(jsonPath("$.age").value(24))
             .andDo(MockMvcResultHandlers.print());

@@ -1,6 +1,6 @@
 package com.jpomykala.springhoc.logging;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 public interface RequestIdProvider {
 

@@ -8,8 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.context.ActiveProfiles;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -19,7 +18,7 @@ public class CorsDefaultConfiguredIT
     @LocalServerPort
     private int serverPort;
 
-    private HttpClient client = HttpClientBuilder.create().build();
+    private final HttpClient client = HttpClientBuilder.create().build();
 
     @Test
     public void shouldSuccessPreflightWhenDefault() throws Exception
@@ -28,7 +27,7 @@ public class CorsDefaultConfiguredIT
         String url = "http://localhost:" + serverPort + "/echo";
         HttpOptions request = new HttpOptions(url);
         request.addHeader("Access-Control-Request-Method", "GET");
-        request.addHeader("Origin", "http://pornhub.com");
+        request.addHeader("Origin", "http://google.com");
 
         //when
         HttpResponse response = client.execute(request);
@@ -45,7 +44,7 @@ public class CorsDefaultConfiguredIT
         String url = "http://localhost:" + serverPort + "/echo";
         HttpOptions request = new HttpOptions(url);
         request.addHeader("Access-Control-Request-Method", "GET");
-        request.addHeader("Origin", "http://redtube.com");
+        request.addHeader("Origin", "http://google.com");
 
         //when
         HttpResponse response = client.execute(request);

@@ -3,8 +3,8 @@ package com.jpomykala.springhoc.logging;
 import com.jpomykala.springhoc.utils.RequestUtils;
 import org.springframework.lang.NonNull;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.constraints.NotNull;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.constraints.NotNull;
 import java.util.UUID;
 
 public class LoggingFilterFactory {
@@ -43,14 +43,14 @@ public class LoggingFilterFactory {
   }
 
 
-  private class DefaultRequestIdProvider implements RequestIdProvider {
+  private static class DefaultRequestIdProvider implements RequestIdProvider {
     @Override
     public String getRequestId(HttpServletRequest request) {
       return UUID.randomUUID().toString().toUpperCase().replace("-", "");
     }
   }
 
-  private class DefaultPrincipalProvider implements PrincipalProvider {
+  private static class DefaultPrincipalProvider implements PrincipalProvider {
     @Override
     public String getPrincipal(HttpServletRequest request) {
       return RequestUtils.getClientIP(request);

@@ -3,7 +3,7 @@ package com.jpomykala.springhoc.utils;
 
 import org.springframework.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
 public final class RequestUtils {
@@ -19,7 +19,7 @@ public final class RequestUtils {
     }
 
     String xfHeader = request.getHeader("X-Forwarded-For");
-    if (!StringUtils.isEmpty(xfHeader)) {
+    if (StringUtils.hasText(xfHeader)) {
       String[] split = xfHeader.split(",");
       if (split.length > 0) {
         return split[0];
@@ -27,7 +27,7 @@ public final class RequestUtils {
     }
 
     String remoteAddr = request.getRemoteAddr();
-    if (!StringUtils.isEmpty(remoteAddr)) {
+    if (StringUtils.hasText(remoteAddr)) {
       return remoteAddr;
     }
     return defaultOutput;

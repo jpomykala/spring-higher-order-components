@@ -8,7 +8,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -29,7 +29,7 @@ public class CorsConfiguredIT
         String url = "http://localhost:" + serverPort + "/echo";
         HttpOptions request = new HttpOptions(url);
         request.addHeader("Access-Control-Request-Method", "GET");
-        request.addHeader("Origin", "http://pornhub.com");
+        request.addHeader("Origin", "http://google.com");
 
         //when
         HttpResponse response = client.execute(request);
@@ -46,7 +46,7 @@ public class CorsConfiguredIT
         String url = "http://localhost:" + serverPort + "/echo";
         HttpOptions request = new HttpOptions(url);
         request.addHeader("Access-Control-Request-Method", "GET");
-        request.addHeader("Origin", "http://redtube.com");
+        request.addHeader("Origin", "http://not-allowed-domain.com");
 
         //when
         HttpResponse response = client.execute(request);
@@ -63,7 +63,7 @@ public class CorsConfiguredIT
         String url = "http://localhost:" + serverPort + "/echo";
         HttpOptions request = new HttpOptions(url);
         request.addHeader("Access-Control-Request-Method", "PUT");
-        request.addHeader("Origin", "http://pornhub.com");
+        request.addHeader("Origin", "http://google.com");
 
         //when
         HttpResponse response = client.execute(request);

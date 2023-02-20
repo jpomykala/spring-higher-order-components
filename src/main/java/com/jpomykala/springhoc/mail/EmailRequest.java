@@ -9,9 +9,11 @@ import java.util.*;
 
 public class EmailRequest {
 
-  private Destination destination;
-  private Set<String> replyTo;
-  private Message message;
+  private final Destination destination;
+  private final Set<String> replyTo;
+  private final Message message;
+  private final String source;
+
 
   public Destination getDestination() {
     return destination;
@@ -25,62 +27,50 @@ public class EmailRequest {
     return message;
   }
 
+  public String getSource() {
+    return source;
+  }
+
   protected EmailRequest(Builder builder) {
     this.destination = builder.destination;
     this.message = builder.message;
+    this.source = builder.source;
     this.replyTo = new HashSet<>(builder.replyTo);
   }
 
 
-  public static ToStep builder() {
+  public static Builder builder() {
     return new Builder();
   }
 
-  public interface ToStep {
+  public static class Builder {
 
-    SubjectStep to(String to);
-
-    SubjectStep to(Collection<String> to);
-  }
-
-  public interface SubjectStep {
-
-    SubjectStep replyTo(String replyTo);
-
-    SubjectStep replyTo(Collection<String> replyTo);
-
-    BodyStep subject(String subject);
-  }
-
-  public interface BodyStep {
-
-    Builder body(String body);
-  }
-
-  public static class Builder implements ToStep, SubjectStep, BodyStep {
-
-    private Message message;
+    private final Message message;
     private Destination destination;
-    private Collection<String> replyTo;
+    private String source;
+    private final Collection<String> replyTo;
 
     public Builder() {
       message = new Message();
-      replyTo = new ArrayList<>();
+      replyTo = new HashSet<>();
     }
 
-    @Override
-    public SubjectStep to(String address) {
-      return to(Collections.singletonList(address));
+
+    public Builder to(String emailAddress) {
+      return to(Collections.singletonList(emailAddress));
     }
 
-    @Override
-    public SubjectStep to(Collection<String> to) {
-      ArrayList<String> toAddresses = new ArrayList<>(to);
+    public Builder to(Collection<String> emailAddresses) {
+      ArrayList<String> toAddresses = new ArrayList<>(emailAddresses);
       this.destination = new Destination(toAddresses);
       return this;
     }
 
-    @Override
+    public Builder from(String from) {
+      this.source = from;
+      return this;
+    }
+
     public Builder body(String bodyText) {
       Content content = new Content().withData(bodyText).withCharset("UTF-8");
       Body body = new Body().withHtml(content);
@@ -88,19 +78,21 @@ public class EmailRequest {
       return this;
     }
 
-    @Override
-    public SubjectStep replyTo(String replyTo) {
+    public Builder body(Body body) {
+      message.setBody(body);
+      return this;
+    }
+
+    public Builder replyTo(String replyTo) {
       this.replyTo.add(replyTo);
       return this;
     }
 
-    @Override
-    public SubjectStep replyTo(Collection<String> replyTo) {
+    public Builder replyTo(Collection<String> replyTo) {
       this.replyTo.addAll(replyTo);
       return this;
     }
 
-    @Override
     public Builder subject(String subject) {
       Content content = new Content(subject);
       message.setSubject(content);

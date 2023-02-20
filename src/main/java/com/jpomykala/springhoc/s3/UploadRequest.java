@@ -1,4 +1,4 @@
-package com.jpomykala.springhoc.s3.model;
+package com.jpomykala.springhoc.s3;
 
 import com.amazonaws.services.s3.model.ObjectMetadata;
 

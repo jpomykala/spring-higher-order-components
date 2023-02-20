@@ -3,7 +3,6 @@ package com.jpomykala.springhoc.s3;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectResult;
-import com.jpomykala.springhoc.s3.model.UploadRequest;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -14,8 +14,7 @@ public class AmazonSesAutoConfigurationTest {
           .withPropertyValues(
                   "spring-hoc.aws.access-key=xxx",
                   "spring-hoc.aws.secret-key=xxx",
-                  "spring-hoc.aws.region=eu-west-1",
-                  "spring-hoc.mail.sender-email-address=no-reply@jpomykala.com"
+                  "spring-hoc.aws.region=eu-west-1"
           )
           .withConfiguration(AutoConfigurations.of(AmazonSesAutoConfigurationTest.ExampleAnnotationConfiguration.class));
 
@@ -25,10 +24,6 @@ public class AmazonSesAutoConfigurationTest {
     this.contextRunner.run(context -> {
       AmazonSimpleEmailService responseWrapper = context.getBean(AmazonSimpleEmailService.class);
       assertThat(responseWrapper).isNotNull();
-
-      MailServiceProperties mailServiceProperties = context.getBean(MailServiceProperties.class);
-      assertThat(mailServiceProperties).isNotNull();
-      assertThat(mailServiceProperties.getSenderEmailAddress()).isNotBlank();
 
       AmazonProperties amazonProperties = context.getBean(AmazonProperties.class);
       assertThat(amazonProperties).isNotNull();

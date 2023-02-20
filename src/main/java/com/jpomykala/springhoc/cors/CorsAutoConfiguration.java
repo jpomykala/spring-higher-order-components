@@ -12,6 +12,7 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import jakarta.servlet.Filter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -29,7 +30,7 @@ public class CorsAutoConfiguration {
   }
 
   @Bean
-  public FilterRegistrationBean corsFilter() {
+  public FilterRegistrationBean<? extends Filter> corsFilter() {
     CorsConfiguration configuration = new CorsConfiguration();
 
     List<String> allowedOrigins = getAllowedOrigins();
@@ -45,7 +46,7 @@ public class CorsAutoConfiguration {
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", configuration);
 
-    FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+    FilterRegistrationBean<?> bean = new FilterRegistrationBean<>(new CorsFilter(source));
     bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
     return bean;
   }
@@ -82,7 +83,7 @@ public class CorsAutoConfiguration {
       return allowedMethods;
     }
     return Arrays.stream(HttpMethod.values())
-            .map(Enum::name)
+            .map(HttpMethod::name)
             .collect(Collectors.toList());
   }
 

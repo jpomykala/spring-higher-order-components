@@ -2,6 +2,7 @@ package com.jpomykala.springhoc.s3.model;
 
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.jpomykala.springhoc.s3.TestByteUtility;
+import com.jpomykala.springhoc.s3.UploadRequest;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

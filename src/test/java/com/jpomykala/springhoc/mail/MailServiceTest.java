@@ -18,8 +18,6 @@ public class MailServiceTest {
   @Mock
   private AmazonSimpleEmailService amazonSimpleEmailService;
 
-  @Mock
-  private MailServiceProperties mailServiceProperties;
 
   @Before
   public void setUp() throws Exception {
@@ -33,7 +31,6 @@ public class MailServiceTest {
             .subject("Hello")
             .body("Message")
             .build();
-    Mockito.when(mailServiceProperties.getSenderEmailAddress()).thenReturn("noreply@jpomykala.com");
 
     //when
     mailService.onEmailMessageRequest(emailRequest);
@@ -51,6 +48,6 @@ public class MailServiceTest {
     mailService.onEmailMessageRequest(emailRequest);
 
     //then
-    Mockito.verifyZeroInteractions(amazonSimpleEmailService);
+    Mockito.verifyNoInteractions(amazonSimpleEmailService);
   }
 }

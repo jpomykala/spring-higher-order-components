@@ -9,20 +9,17 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @AutoConfigureAfter(AmazonSimpleEmailService.class)
-@EnableConfigurationProperties(MailServiceProperties.class)
 public class MailServiceAutoConfiguration {
 
-  private final MailServiceProperties configuration;
   private final AmazonSimpleEmailService amazonSimpleEmailService;
 
   @Autowired
-  public MailServiceAutoConfiguration(MailServiceProperties configuration, AmazonSimpleEmailService amazonSimpleEmailService) {
-    this.configuration = configuration;
+  public MailServiceAutoConfiguration(AmazonSimpleEmailService amazonSimpleEmailService) {
     this.amazonSimpleEmailService = amazonSimpleEmailService;
   }
 
   @Bean
   public MailService mailSendingService() {
-    return new MailService(configuration, amazonSimpleEmailService);
+    return new MailService(amazonSimpleEmailService);
   }
 }
