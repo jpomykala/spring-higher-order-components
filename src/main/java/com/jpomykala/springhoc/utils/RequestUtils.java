@@ -10,6 +10,7 @@ public final class RequestUtils {
 
   private RequestUtils() {
     //hidden constructor
+    throw new AssertionError("Util class not available for instantiation");
   }
 
   public static String getClientIP(HttpServletRequest request) {
